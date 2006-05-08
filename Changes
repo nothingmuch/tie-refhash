@@ -1,0 +1,6 @@
+1.34
+	- Add support for Storable
+	- Add support for reblessing, through refadd (plus compat)
+
+1.33
+	- Fork from bleadperl, May 7th, 2006

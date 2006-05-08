@@ -1,6 +1,6 @@
 package Tie::RefHash;
 
-our $VERSION = 1.33;
+our $VERSION = 1.34;
 
 =head1 NAME
 
@@ -52,6 +52,19 @@ store a reference to one of your own hashes in the tied hash.
     for (keys %h, keys %{$h{$a}}) {
        print ref($_), "\n";
     }
+
+=head1 THREAD SUPPORT
+
+L<Tie::RefHash> fully supports threading using the C<CLONE> method.
+
+=head1 STORABLE SUPPORT
+
+L<Storable> hooks are provided for semantically correct serialization and
+cloning of tied refhashes.
+
+=head1 MAINTAINER
+
+Yuval Kogman E<lt>nothingmuch@woobling.orgE<gt>
 
 =head1 AUTHOR
 
@@ -135,7 +148,7 @@ sub STORABLE_thaw {
   my ( $self, $is_cloning, $version, $refs, $reg ) = @_;
   croak "incompatible versions of Tie::RefHash between freeze and thaw"
     unless $version eq $storable_format_version;
-  
+
   @$self = ( {}, $reg );
   $self->_reindex_keys( $refs );
 }
