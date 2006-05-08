@@ -1,8 +1,10 @@
-#!./perl
+#!/usr/bin/perl -T -w
 
 BEGIN {
-  #chdir 't' if -d 't';
-  #@INC = qw(../lib);
+    if( $ENV{PERL_CORE} ) {
+        chdir 't';
+        @INC = '../lib';
+    }
 }
 
 use strict;

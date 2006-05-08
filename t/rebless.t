@@ -1,4 +1,11 @@
-#!/usr/bin/perl -tw
+#!/usr/bin/perl -T -w
+
+BEGIN {
+    if( $ENV{PERL_CORE} ) {
+        chdir 't';
+        @INC = '../lib';
+    }
+}
 
 use strict;
 use warnings;

@@ -1,4 +1,19 @@
-#!/usr/bin/perl -tw
+#!/usr/bin/perl -T -w
+
+BEGIN {
+    if( $ENV{PERL_CORE} ) {
+        chdir 't';
+        @INC = '../lib';
+    }
+}
+
+BEGIN {
+  require Config;
+  if (($Config::Config{'extensions'} !~ m!\bStorable\b!) ){
+    print "1..0 # Skip -- Perl configured without Storable module\n";
+    exit 0;
+  }
+}
 
 use strict;
 use warnings;

@@ -1,4 +1,4 @@
-#!/usr/bin/perl -w
+#!/usr/bin/perl -T -w
 # 
 # Basic test suite for Tie::RefHash and Tie::RefHash::Nestable.
 # 
@@ -10,9 +10,13 @@
 # 
 
 BEGIN {
-  #chdir 't' if -d 't';
-  #@INC = '.'; 
-  #push @INC, '../lib';
+    if( $ENV{PERL_CORE} ) {
+        chdir 't';
+        @INC = '../lib';
+    }
+}
+
+BEGIN {
   require Config;
   if (($Config::Config{'extensions'} !~ m!\bData/Dumper\b!) ){
     print "1..0 # Skip -- Perl configured without Data::Dumper module\n";
