@@ -9,8 +9,6 @@ BEGIN {
 
 use strict;
 
-use Test::More tests => 2;
-
 use Tie::RefHash;
 
 {
@@ -21,6 +19,8 @@ use Tie::RefHash;
   our @ISA = "Moose";
 }
 
+$\ = "\n";
+print "1..2";
 
 my $obj = Moose->new;
 
@@ -28,8 +28,8 @@ tie my %hash, "Tie::RefHash";
 
 $hash{$obj} = "magic";
 
-is( $hash{$obj}, "magic", "keyed before rebless");
+print ( ( $hash{$obj} eq "magic" ) ? "" : "not ", "ok - keyed before rebless" );
 
 bless $obj, "Elk";
 
-is( $hash{$obj}, "magic", "still the same");
+print ( ( $hash{$obj} eq "magic" ) ? "" : "not ", "ok - still the same");

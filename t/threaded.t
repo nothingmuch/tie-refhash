@@ -14,14 +14,23 @@ BEGIN {
   use Config;
   if ( $Config{usethreads} ) {
     require threads; threads->import;
-    require Test::More; Test::More->import( tests => 14 );
+    print "1..14\n";
   } else {
-    require Test::More;
-    Test::More->import( skip_all => "threads aren't enabled in your perl" )
+    print "1..0 # Skip -- threads aren't enabled in your perl\n";
+    exit 0;
   }
 }
 
 use Tie::RefHash;
+
+$\ = "\n";
+sub ok ($$) {
+  print ( ( $_[0] ? "" : "not " ), "ok - $_[1]" );
+}
+
+sub is ($$$) {
+  print ( ( ( $_[0] eq $_[1] ) ? "" : "not "), "ok - $_[2]" );
+}
 
 tie my %hash, "Tie::RefHash";
 
@@ -49,7 +58,7 @@ my $th = threads->create(sub {
   ok( exists $hash{$r2}, "ref key exists ($r2)" );
   is( $hash{$r2}, "array", "fetch by ref" );
 
-  is_deeply( [ sort keys %hash ], [ sort $r1, $r2, $v1 ], "keys are ok" );
+  is( join("\0",sort keys %hash), join("\0",sort $r1, $r2, $v1), "keys are ok" );
 });
 
 $th->join;

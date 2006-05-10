@@ -18,7 +18,7 @@ BEGIN {
 
 BEGIN {
   unless ( eval { require Data::Dumper; 1 } ) {
-    print "1..0 # Skip -- Perl configured without Data::Dumper module\n";
+    print "1..0 # Skip -- Data::Dumper is not available\n";
     exit 0;
   }
 }    

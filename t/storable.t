@@ -9,18 +9,31 @@ BEGIN {
 
 BEGIN {
   unless ( eval { require Storable; 1 } ){
-    print "1..0 # Skip -- Perl configured without Storable module\n";
+    print "1..0 # Skip -- Storable is not available\n";
     exit 0;
   }
 }
 
 use strict;
 
-use Test::More tests => 24;
-
 use Tie::RefHash;
 
 use Storable qw/dclone nfreeze thaw/;
+
+$\ = "\n";
+print "1..24";
+
+sub ok ($$) {
+    print ( ( $_[0] ? "" : "not " ), "ok - $_[1]" );
+}
+
+sub is ($$$) {
+    print ( ( ( $_[0] eq $_[1] ) ? "" : "not "), "ok - $_[2]" );
+}
+
+sub isa_ok ($$) {
+    ok( eval { $_[0]->isa($_[1]) }, "the object isa $_[1]");
+}
 
 tie my %hash, "Tie::RefHash";
 
