@@ -42,7 +42,6 @@ $hash{$key} = "value";
 $hash{non_ref} = "other";
 
 foreach my $clone ( \%hash, dclone(\%hash), thaw(nfreeze(\%hash)) ){
-  my $clone = dclone(\%hash);
 
   ok( tied(%$clone), "copy is tied");
   isa_ok( tied(%$clone), "Tie::RefHash" );
