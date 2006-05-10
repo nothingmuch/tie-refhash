@@ -17,8 +17,7 @@ BEGIN {
 }
 
 BEGIN {
-  require Config;
-  if (($Config::Config{'extensions'} !~ m!\bData/Dumper\b!) ){
+  unless ( eval { require Data::Dumper; 1 } ) {
     print "1..0 # Skip -- Perl configured without Data::Dumper module\n";
     exit 0;
   }

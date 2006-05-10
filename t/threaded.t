@@ -8,7 +8,6 @@ BEGIN {
 }
 
 use strict;
-use warnings;
 
 BEGIN {
     # this is sucky because threads.pm has to be loaded before Test::Builder

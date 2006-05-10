@@ -8,15 +8,13 @@ BEGIN {
 }
 
 BEGIN {
-  require Config;
-  if (($Config::Config{'extensions'} !~ m!\bStorable\b!) ){
+  unless ( eval { require Storable; 1 } ){
     print "1..0 # Skip -- Perl configured without Storable module\n";
     exit 0;
   }
 }
 
 use strict;
-use warnings;
 
 use Test::More tests => 24;
 
