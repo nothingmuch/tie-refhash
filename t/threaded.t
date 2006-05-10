@@ -12,7 +12,7 @@ use strict;
 BEGIN {
     # this is sucky because threads.pm has to be loaded before Test::Builder
   use Config;
-  if ( $Config{usethreads} ) {
+  if ( $Config{usethreads} and !$Config{use5005threads} ) {
     require threads; threads->import;
     print "1..14\n";
   } else {
