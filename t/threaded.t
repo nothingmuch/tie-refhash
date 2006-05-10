@@ -13,7 +13,7 @@ BEGIN {
     # this is sucky because threads.pm has to be loaded before Test::Builder
   use Config;
   if ( $Config{usethreads} and !$Config{use5005threads} ) {
-    require threads; threads->import;
+    require threads; "threads"->import;
     print "1..14\n";
   } else {
     print "1..0 # Skip -- threads aren't enabled in your perl\n";
