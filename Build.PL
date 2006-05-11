@@ -8,7 +8,7 @@ Module::Build->new(
 	module_name => 'Tie::RefHash',
 	license => 'perl',
 	requires => {
-		'perl'	=> '>= 5.004',
+		'perl'	=> '>= 5.005',
 	},
 	create_makefile_pl => 'traditional',
 	sign => 1,

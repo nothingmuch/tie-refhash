@@ -4,6 +4,8 @@ use vars qw/$VERSION/;
 
 $VERSION = "1.34";
 
+use 5.005;
+
 =head1 NAME
 
 Tie::RefHash - use references as hash keys
