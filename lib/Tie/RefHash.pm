@@ -66,6 +66,11 @@ L<Tie::RefHash> fully supports threading using the C<CLONE> method.
 L<Storable> hooks are provided for semantically correct serialization and
 cloning of tied refhashes.
 
+=head1 RELIC SUPPORT
+
+This version of Tie::RefHash seems to no longer work with 5.004. This has not
+been throughly investigated. Patches welcome ;-)
+
 =head1 MAINTAINER
 
 Yuval Kogman E<lt>nothingmuch@woobling.orgE<gt>
