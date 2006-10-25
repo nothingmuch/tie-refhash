@@ -7,7 +7,7 @@ WriteMakefile
           'NAME' => 'Tie::RefHash',
           'VERSION_FROM' => 'lib/Tie/RefHash.pm',
           'PREREQ_PM' => {},
-          'INSTALLDIRS' => 'site',
+          'INSTALLDIRS' => 'perl',
           'PL_FILES' => {}
         )
 ;
