@@ -1,3 +1,6 @@
+1.35_01
+  - http://public.activestate.com/cgi-bin/perlbrowse?patch=28185
+
 1.35
   - Set INSTALLDIRS => 'perl', as suggested in
     http://rt.cpan.org/Ticket/Display.html?id=22582
