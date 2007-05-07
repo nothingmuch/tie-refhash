@@ -94,23 +94,21 @@ use strict;
 use Carp qw/croak/;
 
 BEGIN {
+  local $@;
   # determine whether we need to take care of threads
   use Config ();
   my $usethreads = $Config::Config{usethreads}; # && exists $INC{"threads.pm"}
   *_HAS_THREADS = $usethreads ? sub () { 1 } : sub () { 0 };
-  if ($usethreads) {
-    # The magic of taint tunneling means that we can't do this require in the
-    # same statement as the boolean check on $usethreads, as $usethreads is
-    # tainted.
-    require Scalar::Util;
-  }
+  *_HAS_SCALAR_UTIL = eval { require Scalar::Util; 1 } ? sub () { 1 } : sub () { 0 };
   *_HAS_WEAKEN = defined(&Scalar::Util::weaken) ? sub () { 1 } : sub () { 0 };
 }
 
 BEGIN {
   # create a refaddr function
 
-  if ( eval { require Scalar::Util; 1 } ) {
+  local $@;
+
+  if ( _HAS_SCALAR_UTIL ) {
     Scalar::Util->import("refaddr");
   } else {
     require overload;

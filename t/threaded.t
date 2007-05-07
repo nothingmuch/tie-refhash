@@ -9,11 +9,11 @@ BEGIN {
 
 use strict;
 
-use Scalar::Util ();
 
 BEGIN {
     # this is sucky because threads.pm has to be loaded before Test::Builder
   use Config;
+  eval { require Scalar::Util };
   if ( $Config{usethreads} and !$Config{use5005threads} and defined(&Scalar::Util::weaken) ) {
     require threads; "threads"->import;
     print "1..14\n";
