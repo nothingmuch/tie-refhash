@@ -1,3 +1,6 @@
+1.37
+  - Don't break without Scalar::Util
+
 1.36
   - Don't use thread cloning registry unless Scalar::Util::weaken is available
   - Warn when threads are enabled but Scalar::Util::weaken is missing
