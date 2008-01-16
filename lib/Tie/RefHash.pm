@@ -71,6 +71,11 @@ cloning of tied refhashes.
 This version of Tie::RefHash seems to no longer work with 5.004. This has not
 been throughly investigated. Patches welcome ;-)
 
+=head1 LICENSE
+
+This program is free software; you can redistribute it and/or modify it under
+the same terms as Perl itself
+
 =head1 MAINTAINER
 
 Yuval Kogman E<lt>nothingmuch@woobling.orgE<gt>
