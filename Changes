@@ -1,3 +1,6 @@
+1.38
+  - Skip threaded.t in more situations where it's borked
+
 1.37
   - Don't break without Scalar::Util
 
