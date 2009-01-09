@@ -164,7 +164,7 @@ my $storable_format_version = join("/", __PACKAGE__, "0.01");
 sub STORABLE_freeze {
   my ( $self, $is_cloning ) = @_;
   my ( $refs, $reg ) = @$self;
-  return ( $storable_format_version, [ values %$refs ], $reg );
+  return ( $storable_format_version, [ values %$refs ], $reg || {} );
 }
 
 sub STORABLE_thaw {
